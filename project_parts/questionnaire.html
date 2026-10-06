@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Завдання 4 — Анкета</title>
+<style>
+body{font-family:Arial;background:#eef3f7;margin:0;padding:25px}
+form{max-width:800px;margin:auto;background:white;padding:25px;border-radius:12px}
+fieldset{margin:15px 0;padding:18px;border:1px solid #aaa;border-radius:8px}
+label{display:block;margin:9px 0 5px}
+input,textarea,select{padding:8px;width:95%;max-width:500px}
+input[type=radio],input[type=checkbox],input[type=file]{width:auto}
+button{padding:10px 20px;margin:10px 8px 0 0}
+</style>
+</head>
+<body>
+<h1 style="text-align:center">Завдання 4. Анкета студента</h1>
+
+<form action="questionnaire.html" method="get">
+<fieldset>
+<legend>Особисті дані</legend>
+<label for="name">Ім'я:</label>
+<input id="name" name="name" value="Іван" placeholder="Введіть ім'я" required tabindex="1">
+
+<label for="surname">Прізвище:</label>
+<input id="surname" name="surname" value="Іваненко" placeholder="Введіть прізвище" required tabindex="2">
+
+<label for="about">Про себе:</label>
+<textarea id="about" name="about" placeholder="Коротко розкажіть про себе" tabindex="3"></textarea>
+
+<label for="password">Пароль (6 символів):</label>
+<input id="password" name="password" type="password" placeholder="Aa1234" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6}" required tabindex="4">
+
+<label for="email">Email:</label>
+<input id="email" name="email" type="email" autocomplete="off" placeholder="student@example.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required tabindex="5">
+
+<label for="tel">Мобільний номер:</label>
+<input id="tel" name="tel" type="tel" placeholder="+380XXXXXXXXX" pattern="\+380[0-9]{9}" required tabindex="6">
+
+<label for="date">Дата народження:</label>
+<input id="date" name="date" type="date" tabindex="7">
+</fieldset>
+
+<fieldset>
+<legend>Навчання</legend>
+<p>Курс:</p>
+<label><input type="radio" name="course" value="1" checked tabindex="8"> 1 курс</label>
+<label><input type="radio" name="course" value="2" tabindex="9"> 2 курс</label>
+<label><input type="radio" name="course" value="3" tabindex="10"> 3 курс</label>
+
+<p>Форма навчання:</p>
+<label><input type="radio" name="study_form" value="full" tabindex="11"> Денна</label>
+<label><input type="radio" name="study_form" value="part" checked tabindex="12"> Заочна</label>
+<label><input type="radio" name="study_form" value="online" tabindex="13"> Дистанційна</label>
+
+<p>Інтереси:</p>
+<label><input type="checkbox" name="interest" value="programming" tabindex="14"> Програмування</label>
+<label><input type="checkbox" name="interest" value="design" tabindex="15"> Дизайн</label>
+<label><input type="checkbox" name="interest" value="databases" tabindex="16"> Бази даних</label>
+<label><input type="checkbox" name="interest" value="networks" tabindex="17"> Мережі</label>
+
+<label for="faculty">Факультет:</label>
+<select id="faculty" name="faculty" tabindex="18">
+<option value="computer-science">Комп'ютерні науки</option>
+<option value="cybersecurity">Кібербезпека</option>
+<option value="software" selected>Інженерія програмного забезпечення</option>
+<option value="economics">Економіка</option>
+<option value="law">Право</option>
+</select>
+
+<label for="languages">Мови програмування (можна декілька):</label>
+<select id="languages" name="languages" multiple size="6" tabindex="19">
+<option value="cpp">C++</option><option value="c">C</option><option value="python">Python</option>
+<option value="java">Java</option><option value="js">JavaScript</option><option value="csharp">C#</option>
+</select>
+
+<label for="specialization">Спеціалізація:</label>
+<select id="specialization" name="specialization" tabindex="20">
+<optgroup label="Програмування">
+<option value="backend">Backend</option><option value="frontend">Frontend</option><option value="desktop">Desktop</option>
+</optgroup>
+<optgroup label="Дані">
+<option value="sql">SQL</option><option value="analytics">Аналітика</option><option value="bigdata">Big Data</option>
+</optgroup>
+<optgroup label="Мережі">
+<option value="admin">Адміністрування</option><option value="network">Мережі</option><option value="cloud">Cloud</option>
+</optgroup>
+<optgroup label="Інше">
+<option value="testing">Тестування</option><option value="devops">DevOps</option><option value="other">Інше</option>
+</optgroup>
+</select>
+
+<label for="city">Місто:</label>
+<input id="city" name="city" list="cities" placeholder="Почніть вводити місто" tabindex="21">
+<datalist id="cities">
+<option value="Чернівці"><option value="Київ"><option value="Львів"><option value="Одеса"><option value="Харків">
+</datalist>
+</fieldset>
+
+<fieldset>
+<legend>Файли та відправлення</legend>
+<label for="audio">Завантажити аудіофайли:</label>
+<input id="audio" name="audio" type="file" accept="audio/*" multiple tabindex="22">
+
+<div>
+<button type="submit" tabindex="23">Надіслати (GET)</button>
+<button type="reset" tabindex="24">Очистити</button>
+</div>
+</fieldset>
+</form>
+
+<form action="questionnaire.html" method="post" enctype="multipart/form-data" style="max-width:800px;margin:20px auto;background:white;padding:25px;border-radius:12px">
+<fieldset>
+<legend>POST + multipart/form-data</legend>
+<p>Ця форма демонструє структуру POST-запиту з можливістю передавання файлів.</p>
+<label for="postname">Ім'я:</label>
+<input id="postname" name="postname" value="Student" placeholder="Введіть ім'я" tabindex="25">
+<button type="submit" tabindex="26">Надіслати (POST)</button>
+</fieldset>
+</form>
+
+<p style="text-align:center"><a href="../index.html">Повернутись на головну</a></p>
+</body>
+</html>
